@@ -12,6 +12,13 @@ fs.readFile('load_dept_emp.txt', 'utf8', function(err, data){
     }
 });
 
+// 1. You will need the attached data files. 
+// 2. The data will need to cleaned up/sanitized before you can use it programatically. fun.
+// 3. This program uses the same logic that the hotel sales report used. 
+// 4. Create a report that lists the total annual salaries by department.
+// 5. You are only required to report on the first 20 employees
+// 6. Work on this assignment alone. Don't let someone else solution rob you of the chance to create your own.
+
 // var business = "Dept Co.";
 // var departmentId = ["d001", "d002", "d003", "d004", ]; 
 // var departments = ["management", "development", "sales", "marketing" ];
