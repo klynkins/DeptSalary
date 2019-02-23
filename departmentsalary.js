@@ -2,7 +2,7 @@
 var fs = require ('fs');
 
 // Step 1. Create all single-d and multi-d arrays AS empty arrays (initially)
-    //push single string data/e;ements into an array as a single ekement 
+    //push single string data/elements into an array as a single element 
     //push array data into array to for multi-d arrays
     
 //single-d arrays --valid
@@ -23,7 +23,7 @@ fs.readFile('load_dept_names.txt', 'utf8', function(err, data){
     
     for (var i = 0; i < deptDataArray.length; i++){
         //populate multi-d arrays with DATA
-        departmentId.push(deptDataArray[i].slice(2,6));
+        departmentId.push(deptDataArray[i].slice(2, 6));
         departments.push(deptDataArray[i].slice(9,-3));
         
         //populate multi-d arrays with empty sub-arrays (NO DATA)
@@ -52,12 +52,14 @@ fs.readFile('load_dept_emp.txt', 'utf8', function(err, data){
             //console.log(employeeDataArray[i].slice(8, 12));
             //console.log(employeeDataArray[i].slice(1,6));
             
-            employeeId[departmentId.indexOf(employeeDataArray[i].slice(8, 12))].push(employeeDataArray[i].slice(1,6));
+            employeeId[departmentId.indexOf(employeeDataArray[i].slice(8, 12))].push(employeeDataArray[i].slice(1, 6));
         }
     }
     
-    //console.log(employeeId);
+    console.log(employeeId);
 });
+
+var globalEmployeeNameArray;
 
 fs.readFile('load_employee.txt', 'utf8', function(err, data){
     if (err) throw err;
@@ -70,18 +72,33 @@ fs.readFile('load_employee.txt', 'utf8', function(err, data){
     for (var i = 0; i < employeeNameArray.length; i++) {
         
         //console.log(employeeNameArray[i].slice(1, 6));
-        //console.log(employeeDataArray[i].slice(1,6));
         
         //employeeName[employeeId.indexOf(employeeNameArray[i].slice(1, 6))].push(employeeNameArray[i].slice(21, ))
     }
 });
 
-fs.readFile('load_salaries1.txt', 'utf8', function(err, data){
+fs.readFile('load_salaries1.txt', 'utf8', function(err, data){ //file has been loaded and file has been put intom data
     if (err) throw err;
    
    var employeeSalaryClean = data.replace(/INSERT INTO `salaries` VALUES /g, "");
    var employeeSalaryArray = employeeSalaryClean.split('\n');
    
-   console.log(employeeSalaryArray);
-  
+   //console.log(employeeSalaryArray);
+   
+   for (var i = 0; i < employeeSalaryArray.length; i++) {
+       if (employeeSalaryArray[i].slice(27, 31) == '9999') {
+           for (var j = 0; j < employeeId.length; j++) { //looping through sub array of employee id
+               for (var k = 0; k < employeeId[j].length; k++) { //compare it to employee id 
+                   if (employeeId[j][k] == employeeSalaryArray[i].slice(1, 6)) {
+                      salaries[j].push(employeeSalaryArray[i].slice(7, 12)); //pushing salaries in
+                   }
+               }
+           }
+            //console.log(employeeSalaryArray[i].slice(7, 12));
+            //console.log(employeeSalaryArray[i].slice(1, 6));
+            
+            //salaries[employeeId.indexOf(employeeSalaryArray[i].slice(1, 6))].push(employeeSalaryArray[i].slice(27, 31));
+       }
+   }
+   console.log(salaries);
 });    
