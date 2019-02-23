@@ -69,9 +69,19 @@ fs.readFile('load_employee.txt', 'utf8', function(err, data){
     
     for (var i = 0; i < employeeNameArray.length; i++) {
         
-        console.log(employeeNameArray[i].slice(1, 6));
+        //console.log(employeeNameArray[i].slice(1, 6));
         //console.log(employeeDataArray[i].slice(1,6));
         
-        employeeName[employeeId.indexOf(employeeNameArray[i].slice(1, 6))].push(employeeNameArray[i].slice(21, ))
+        //employeeName[employeeId.indexOf(employeeNameArray[i].slice(1, 6))].push(employeeNameArray[i].slice(21, ))
     }
 });
+
+fs.readFile('load_salaries1.txt', 'utf8', function(err, data){
+    if (err) throw err;
+   
+   var employeeSalaryClean = data.replace(/INSERT INTO `salaries` VALUES /g, "");
+   var employeeSalaryArray = employeeSalaryClean.split('\n');
+   
+   console.log(employeeSalaryArray);
+  
+});    
