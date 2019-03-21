@@ -56,7 +56,7 @@ fs.readFile('load_dept_emp.txt', 'utf8', function(err, data){
         }
     }
     
-    //console.log(employeeId);
+    console.log(employeeId);
 });
 
 //var globalEmployeeNameArray;
@@ -79,7 +79,7 @@ fs.readFile('load_employee.txt', 'utf8', function(err, data){
                 }
             }
         }
-        //employeeName[employeeId.indexOf(employeeNameArray[i].slice(1, 6))].push(employeeNameArray[i].slice(21, -19));
+        //employeeName[employeeId.indexOf(employeeNameArray[i].slice(1, 6))].push(employeeNameArray[i].slice(21, -20));
         console.log(employeeName);
     }
 });
@@ -107,5 +107,5 @@ fs.readFile('load_salaries1.txt', 'utf8', function(err, data){ //file has been l
             //salaries[employeeId.indexOf(employeeSalaryArray[i].slice(1, 6))].push(employeeSalaryArray[i].slice(27, 31));
        }
    }
-   //console.log(salaries);
+   console.log(salaries);
 });    
