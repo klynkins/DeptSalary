@@ -90,7 +90,7 @@ fs.readFile('load_salaries1.txt', 'utf8', function(err, data){ //file has been l
    var employeeSalaryClean = data.replace(/INSERT INTO `salaries` VALUES /g, "");
    var employeeSalaryArray = employeeSalaryClean.split('\n');
    
-   //console.log(employeeSalaryArray);
+   console.log(employeeSalaryArray);
    
    for (var i = 0; i < employeeSalaryArray.length; i++) {
        if (employeeSalaryArray[i].slice(27, 31) == '9999') {
